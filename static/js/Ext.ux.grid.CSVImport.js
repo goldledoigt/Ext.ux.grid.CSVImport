@@ -3,11 +3,10 @@ Ext.ns("Ext.ux.grid");
 Ext.ux.grid.CSVImport = function() {
 
     var grid = null;
-    var fieldSeparator = ",";
+    var strDelimiter = ",";
     var endLine = "\n";
 
     function csvToArray(strData, strDelimiter){
-        strDelimiter = (strDelimiter || ",");
         var arrData = [[]];
         var arrMatches = null;
         var objPattern = new RegExp((
@@ -33,7 +32,7 @@ Ext.ux.grid.CSVImport = function() {
     }
 
     function addRow(row) {
-        row = csvToArray(row);
+        row = csvToArray(row, strDelimiter);
         grid.store.loadData(row, true);
     }
 
